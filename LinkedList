@@ -1,4 +1,4 @@
-//insertion in linked list
+//insertion at head  in linked list
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -35,6 +35,61 @@ int main(){
     cout<<"before inserting LL"<<endl;
     printList(head);
     head = insertAtHead(0,head);
+    cout<<"after inserting LL"<<endl;
+    printList(head);
+    return 0;
+}
+
+//insertion at Tail in linked list
+#include <bits/stdc++.h>
+
+using namespace std;
+class listNode{
+    public:
+    int data;
+    listNode* next;
+    listNode(int data1){
+        data = data1;
+        next = NULL;
+    }
+};
+void printList(listNode* head){
+    listNode* temp=head;
+    while(temp!=NULL){
+        cout<<temp->data<<"-->";
+        temp=temp->next;
+    }
+    cout<<endl;
+}
+listNode* insertAtHead(int data , listNode* head){
+    //step01 creating a new node 
+    listNode* newNode = new listNode(data);
+    newNode->next=head;
+    head = newNode;
+    return head;
+}
+listNode* insertAtTail(int data, listNode* head) {
+    listNode* newNode = new listNode(data);
+    if (head == NULL) {
+        head = newNode;
+    } else {
+        listNode* temp = head;
+        while (temp->next != NULL) {
+            temp = temp->next;
+        }
+        temp->next = newNode;
+    }
+    return head;
+}
+int main(){
+    listNode * head = NULL;
+    head = insertAtHead(40,head);
+    head = insertAtHead(50,head);
+    head = insertAtHead(60,head);
+    head = insertAtHead(70,head);
+    cout<<"before inserting LL"<<endl;
+    printList(head);
+    head = insertAtTail(0,head);
     cout<<"after inserting LL"<<endl;
     printList(head);
     return 0;
