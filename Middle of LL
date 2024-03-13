@@ -1,0 +1,42 @@
+//  PROBLEM NO. 876-MIDDLE OF LINKED LIST
+//NATIVE AND BRUTE FORCE APPROACH
+class Solution {
+public:
+    ListNode* middleNode(ListNode* head) {
+        if(head==NULL || head->next==NULL){
+            return head;
+            }
+            ListNode* temp = head;
+            int n=0;
+            while(temp!=NULL){
+                n++;
+                temp = temp -> next;
+            }
+            temp = head;
+            for(int i=0;i<n/2;i++){
+                temp = temp -> next;
+            }
+            return temp;
+    }
+};
+
+//OPTIMAL SOLUTION AND TORTOISE-HARE METHOD
+class Solution {
+public:
+    ListNode* middleNode(ListNode* head) {
+        if(head==NULL || head->next==NULL){
+            return head;
+        }
+        ListNode* slow = head;
+        ListNode* fast = head->next;
+        while(fast != NULL){
+            fast = fast->next;
+            if(fast != NULL){
+                fast = fast->next;
+            }
+            slow = slow->next;
+        }
+        return slow;
+        
+    }
+};
