@@ -1,0 +1,38 @@
+//LEETCODE PROBLEM NO. 206
+// USING ITERATIVE METHOD
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+       ListNode* prev=NULL;
+         ListNode* curr=head;
+          ListNode* forward=NULL;
+          while(curr!=NULL){
+            forward = curr->next;
+            curr->next=prev;
+            prev = curr;
+            curr = forward;
+      }
+        return prev;
+    }
+};
+//USING RECURSION METHOD
+class Solution {
+public:
+    void reverse(ListNode* &head,ListNode* curr,ListNode* prev){
+      //BASE CASE
+        if(curr==NULL){
+            head=prev;
+            return ;
+        }
+        ListNode* forward=curr->next;
+      //RECURSIVE CALL
+        reverse(head,forward,curr);
+        curr->next=prev;
+    }
+    ListNode* reverseList(ListNode* head) {
+        ListNode* prev=NULL;
+        ListNode* curr=head;
+        reverse(head,curr,prev);
+        return head;
+    }
+};
