@@ -1,0 +1,27 @@
+// PROBLEM NO. 234 - PALINDROME LINKED LIST
+//BRUTE FORCE APPROACH
+class Solution {
+public:
+    bool checkPalindrome(vector<int> ans){
+        int n = ans.size();
+        int s=0,e=n-1; 
+        while(s<=e){
+            if(ans[s]!=ans[e]){
+                return 0;
+            }
+            s++;
+            e--;
+        }
+        return 1;
+    }
+    bool isPalindrome(ListNode* head) {
+        //APPROACH 01
+        ListNode* temp = head;
+        vector<int> arr;
+        while(temp != NULL){
+            arr.push_back(temp->val);
+            temp = temp->next;
+        }
+        return checkPalindrome(arr);
+    }
+};
