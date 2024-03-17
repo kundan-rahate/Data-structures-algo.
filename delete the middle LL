@@ -1,0 +1,35 @@
+//PROBLEM N0. 2095 - DELETE THE MIDDLE IN LL
+//APPROACH 01;
+STEP01 - FIND THE LENGTH OF LIST
+STEP02 - DECLARE TWO LIST 
+  TEMP - IT POINTS ON NODE WHICH HAS TO BE DELETE
+  PREV - IT POINTS ON THE PREVEIOUS OF TEMP NODE
+STEP03- STEP02 RUNS ONLY LENGTH/2 TIMES
+STEP04 - THEN AT LAST WE HAVE TO DELETE THAT TEMP AND THIER IS POINTS TO PREVIOUS NEXT
+  class Solution {
+public:
+    int getLength(ListNode* head){
+        int l=0;
+        while(head != NULL){
+            l++;
+            head = head->next;
+        }
+        return l;
+    }
+    ListNode* deleteMiddle(ListNode* head) {
+        int length = getLength(head);
+        if(length == 1){
+            delete(head);
+            return NULL;
+        }
+        ListNode* temp = head;
+        ListNode* prev = NULL;
+        for(int i=0;i<length/2;i++){
+            prev = temp;
+            temp = temp->next;
+        }
+        prev->next = temp ->next;
+        delete(temp);
+        return head;
+    }
+};
